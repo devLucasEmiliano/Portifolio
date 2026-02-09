@@ -1,13 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { Mail, Copy, Check, Github, Linkedin } from "lucide-react"
+import { Mail, Copy, Check, Github } from "lucide-react"
 
 const email = "lucas@example.com"
 
 const socials = [
-  { icon: Github, href: "https://github.com/devLucasEmiliano", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/devLucasEmiliano", label: "GitHub" }
 ]
 
 export function ContactSection() {

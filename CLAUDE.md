@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # Start development server (Next.js with Turbopack)
-npm run build    # Build for production
-npm run start    # Run production build
-npm run lint     # Run ESLint
+bun run dev      # Start development server (Next.js with Turbopack)
+bun run build    # Build for production
+bun run start    # Run production build
+bun run lint     # Run ESLint
 ```
 
 ## Architecture

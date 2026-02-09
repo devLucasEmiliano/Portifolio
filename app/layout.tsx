@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Developer portfolio - React, Next.js & Node.js specialist",
 }
 
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
-const _jetbrainsMono = JetBrains_Mono({ subsets: ["latin"] })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" })
 
 export default function RootLayout({
   children,
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="font-sans" suppressHydrationWarning>
+    <html lang="en" className={`font-sans ${geistMono.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}

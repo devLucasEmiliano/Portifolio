@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Github, Linkedin, ArrowDown } from "lucide-react"
+import { Github, ArrowDown } from "lucide-react"
 
 export function HeroSection() {
   const [displayText, setDisplayText] = useState("")
@@ -32,7 +32,7 @@ export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
       {/* Background gradient mesh */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-secondary/5" />
       <div className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-secondary/5 rounded-full blur-3xl" />
 
@@ -75,22 +75,13 @@ export function HeroSection() {
 
             <div className="flex items-center gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/devLucasEmiliano"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-muted-foreground hover:text-foreground border border-border hover:border-primary transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={20} />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 text-muted-foreground hover:text-foreground border border-border hover:border-primary transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
               </a>
             </div>
           </div>

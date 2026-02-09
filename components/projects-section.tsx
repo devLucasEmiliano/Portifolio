@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
@@ -85,10 +86,11 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 
       {/* Image */}
       <div className="relative overflow-hidden aspect-video">
-        <img
+        <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
-          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? "scale-105" : "scale-100"}`}
+          fill
+          className={`object-cover transition-transform duration-500 ${isHovered ? "scale-105" : "scale-100"}`}
         />
         <div
           className={`absolute inset-0 bg-background/80 flex items-center justify-center gap-4 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
