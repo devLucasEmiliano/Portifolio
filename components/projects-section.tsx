@@ -51,6 +51,26 @@ const projects = [
   },
   {
     id: 3,
+    title: "Neuron",
+    description: "Extensão Chrome desenvolvida para o Ministério da Agricultura e exportada para a Controladoria-Geral da União, integrada ao Fala.BR — o maior sistema de ouvidoria do Brasil.",
+    image: "/projects/screenshots_neuron/neuron-dashboard.png",
+    screenshots: [
+      "/projects/screenshots_neuron/neuron-dashboard.png",
+      "/projects/screenshots_neuron/neuron-geral.png",
+      "/projects/screenshots_neuron/neuron-wiget.png",
+      "/projects/screenshots_neuron/neuron-prazos.png",
+      "/projects/screenshots_neuron/neuron-respostas.png",
+      "/projects/screenshots_neuron/neuron-modelos.png",
+      "/projects/screenshots_neuron/neuron-focais.png",
+      "/projects/screenshots_neuron/neuron-json.png",
+      "/projects/screenshots_neuron/neuron-notifier.png",
+      "/projects/screenshots_neuron/neuron-tratar.png",
+    ],
+    tags: ["JavaScript", "HTML", "CSS", "Chrome Extension"],
+    github: "https://github.com/devLucasEmiliano/Neuron",
+  },
+  {
+    id: 4,
     title: "E-Commerce Platform",
     description: "Plataforma completa de e-commerce com checkout, pagamentos e dashboard admin.",
     image: "/ecommerce-platform-dark-theme.png",
@@ -59,7 +79,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 4,
+    id: 5,
     title: "Task Management App",
     description: "Aplicação de gerenciamento de tarefas com real-time sync e colaboração em equipe.",
     image: "/task-management-dark-theme.png",
@@ -68,7 +88,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 5,
+    id: 6,
     title: "API Rest com Autenticação",
     description: "Sistema de API Rest com autenticação JWT e session, usando Node + Express + Sequelize.",
     image: "/rest-api-authentication-dark-theme.jpg",
@@ -77,7 +97,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 6,
+    id: 7,
     title: "Blog com CMS",
     description: "Blog completo com sistema de login, criação de posts e gerenciamento de conteúdo.",
     image: "/blog-cms-dark-theme.jpg",
@@ -86,7 +106,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 7,
+    id: 8,
     title: "Dashboard Analytics",
     description: "Dashboard de analytics com visualizações interativas e relatórios customizados.",
     image: "/analytics-dashboard-dark-theme.png",
@@ -95,7 +115,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 8,
+    id: 9,
     title: "Sistema de Chat Real-time",
     description: "Aplicação de chat em tempo real com salas e mensagens privadas.",
     image: "/dark-theme-chat-app.png",
@@ -104,7 +124,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 9,
+    id: 10,
     title: "Portfolio Interativo",
     description: "Portfolio pessoal com animações, tema dark/light e design responsivo.",
     image: "/developer-portfolio-dark-theme.jpg",
