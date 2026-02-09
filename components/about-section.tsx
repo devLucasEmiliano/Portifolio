@@ -72,7 +72,7 @@ export function AboutSection() {
                   <p className="text-sm text-muted-foreground">Anos de exp.</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-primary">7</p>
+                  <p className="text-3xl font-bold text-primary">+5</p>
                   <p className="text-sm text-muted-foreground">Projetos</p>
                 </div>
               </div>

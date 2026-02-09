@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Mail, Copy, Check, Github } from "lucide-react"
 
-const email = "lucas@example.com"
+const email = "lucas.e.m.r@hotmail.com"
 
 const socials = [
   { icon: Github, href: "https://github.com/devLucasEmiliano", label: "GitHub" }
