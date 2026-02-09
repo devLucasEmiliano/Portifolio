@@ -82,6 +82,21 @@ const projects = [
     tags: ["Next.js"],
     github: "",
   },
+  {
+    id: 5,
+    title: "LocalKan",
+    description: "Kanban criado para ser rápido e que salve o conteúdo sem precisar de criar uma conta.",
+    image: "/projects/screenshots_localkan/localkan.vercel.app_.png",
+    screenshots: [
+      "/projects/screenshots_localkan/localkan.vercel.app_.png",
+      "/projects/screenshots_localkan/localkan.vercel.app_ (1).png",
+      "/projects/screenshots_localkan/localkan.vercel.app_ (2).png",
+      "/projects/screenshots_localkan/localkan.vercel.app_ (3).png",
+    ],
+    tags: ["Next.js", "Express"],
+    github: "",
+    url: "https://localkan.vercel.app",
+  },
 ]
 
 type Project = (typeof projects)[0]
