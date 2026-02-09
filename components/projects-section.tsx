@@ -71,6 +71,19 @@ const projects = [
   },
   {
     id: 4,
+    title: "COP30 Chatbot",
+    description: "Chatbot criado para atender demandas do exterior durante o período da COP30 para o Fala.BR.",
+    image: "/projects/screenshots_cop30/03-chat-interface.png",
+    screenshots: [
+      "/projects/screenshots_cop30/01-language-selection.png",
+      "/projects/screenshots_cop30/02-terms-and-conditions.png",
+      "/projects/screenshots_cop30/03-chat-interface.png",
+    ],
+    tags: ["Next.js"],
+    github: "",
+  },
+  {
+    id: 5,
     title: "E-Commerce Platform",
     description: "Plataforma completa de e-commerce com checkout, pagamentos e dashboard admin.",
     image: "/ecommerce-platform-dark-theme.png",
@@ -79,7 +92,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 5,
+    id: 6,
     title: "Task Management App",
     description: "Aplicação de gerenciamento de tarefas com real-time sync e colaboração em equipe.",
     image: "/task-management-dark-theme.png",
@@ -88,7 +101,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 6,
+    id: 7,
     title: "API Rest com Autenticação",
     description: "Sistema de API Rest com autenticação JWT e session, usando Node + Express + Sequelize.",
     image: "/rest-api-authentication-dark-theme.jpg",
@@ -97,7 +110,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 7,
+    id: 8,
     title: "Blog com CMS",
     description: "Blog completo com sistema de login, criação de posts e gerenciamento de conteúdo.",
     image: "/blog-cms-dark-theme.jpg",
@@ -106,7 +119,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 8,
+    id: 9,
     title: "Dashboard Analytics",
     description: "Dashboard de analytics com visualizações interativas e relatórios customizados.",
     image: "/analytics-dashboard-dark-theme.png",
@@ -115,7 +128,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 9,
+    id: 10,
     title: "Sistema de Chat Real-time",
     description: "Aplicação de chat em tempo real com salas e mensagens privadas.",
     image: "/dark-theme-chat-app.png",
@@ -124,7 +137,7 @@ const projects = [
     github: "#",
   },
   {
-    id: 10,
+    id: 11,
     title: "Portfolio Interativo",
     description: "Portfolio pessoal com animações, tema dark/light e design responsivo.",
     image: "/developer-portfolio-dark-theme.jpg",
