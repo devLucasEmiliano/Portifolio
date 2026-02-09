@@ -1,76 +1,130 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import Image from "next/image"
-import { ExternalLink, Github } from "lucide-react"
+import * as Dialog from "@radix-ui/react-dialog"
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden"
+import { Github, Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react"
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Plataforma completa de e-commerce com checkout, pagamentos e dashboard admin.",
-    image: "/ecommerce-platform-dark-theme.png",
-    tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
-    demo: "#",
-    github: "#",
+    title: "Derivada",
+    description: "Plataforma para desenvolvimento de competências no uso de Inteligência Artificial Aplicada.",
+    image: "/projects/derivada-hero.png",
+    screenshots: ["/projects/derivada-full.png"],
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    github: "",
+    url: "https://derivada.org",
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "Aplicação de gerenciamento de tarefas com real-time sync e colaboração em equipe.",
-    image: "/task-management-dark-theme.png",
-    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
-    demo: "#",
-    github: "#",
+    title: "GU.IA",
+    description: "Plataforma de notícias com integração de IA utilizando Next.js e NestJS.",
+    image: "/projects/screenshots_guia/jornal.png",
+    screenshots: [
+      "/projects/screenshots_guia/jornal.png",
+      "/projects/screenshots_guia/jornal-slug.png",
+      "/projects/screenshots_guia/colunistas.png",
+      "/projects/screenshots_guia/colunistas-slug.png",
+      "/projects/screenshots_guia/acervo.png",
+      "/projects/screenshots_guia/do-guara.png",
+      "/projects/screenshots_guia/historia.png",
+      "/projects/screenshots_guia/contato.png",
+      "/projects/screenshots_guia/login.png",
+      "/projects/screenshots_guia/login-esqueceu-senha.png",
+      "/projects/screenshots_guia/dashboard.png",
+      "/projects/screenshots_guia/dashboard-noticias.png",
+      "/projects/screenshots_guia/dashboard-noticias-nova.png",
+      "/projects/screenshots_guia/dashboard-noticias-editar.png",
+      "/projects/screenshots_guia/dashboard-categorias.png",
+      "/projects/screenshots_guia/dashboard-categorias-nova.png",
+      "/projects/screenshots_guia/dashboard-categorias-editar.png",
+      "/projects/screenshots_guia/dashboard-colunistas.png",
+      "/projects/screenshots_guia/dashboard-colunistas-novo.png",
+      "/projects/screenshots_guia/dashboard-colunistas-editar.png",
+      "/projects/screenshots_guia/dashboard-layout.png",
+      "/projects/screenshots_guia/dashboard-configuracoes.png",
+    ],
+    tags: ["Next.js", "NestJS", "TypeScript", "AI"],
+    github: "https://github.com/devLucasEmiliano/gu.ia",
   },
   {
     id: 3,
-    title: "API Rest com Autenticação",
-    description: "Sistema de API Rest com autenticação JWT e session, usando Node + Express + Sequelize.",
-    image: "/rest-api-authentication-dark-theme.jpg",
-    tags: ["Node.js", "Express", "JWT", "MySQL"],
-    demo: "#",
+    title: "E-Commerce Platform",
+    description: "Plataforma completa de e-commerce com checkout, pagamentos e dashboard admin.",
+    image: "/ecommerce-platform-dark-theme.png",
+    screenshots: [],
+    tags: ["Next.js", "TypeScript", "Stripe", "Prisma"],
     github: "#",
   },
   {
     id: 4,
-    title: "Blog com CMS",
-    description: "Blog completo com sistema de login, criação de posts e gerenciamento de conteúdo.",
-    image: "/blog-cms-dark-theme.jpg",
-    tags: ["Next.js", "Strapi", "PostgreSQL", "Tailwind"],
-    demo: "#",
+    title: "Task Management App",
+    description: "Aplicação de gerenciamento de tarefas com real-time sync e colaboração em equipe.",
+    image: "/task-management-dark-theme.png",
+    screenshots: [],
+    tags: ["React", "Node.js", "Socket.io", "MongoDB"],
     github: "#",
   },
   {
     id: 5,
-    title: "Dashboard Analytics",
-    description: "Dashboard de analytics com visualizações interativas e relatórios customizados.",
-    image: "/analytics-dashboard-dark-theme.png",
-    tags: ["React", "Redux", "D3.js", "NestJS"],
-    demo: "#",
+    title: "API Rest com Autenticação",
+    description: "Sistema de API Rest com autenticação JWT e session, usando Node + Express + Sequelize.",
+    image: "/rest-api-authentication-dark-theme.jpg",
+    screenshots: [],
+    tags: ["Node.js", "Express", "JWT", "MySQL"],
     github: "#",
   },
   {
     id: 6,
-    title: "Sistema de Chat Real-time",
-    description: "Aplicação de chat em tempo real com salas e mensagens privadas.",
-    image: "/dark-theme-chat-app.png",
-    tags: ["React", "Socket.io", "MongoDB", "Express"],
-    demo: "#",
+    title: "Blog com CMS",
+    description: "Blog completo com sistema de login, criação de posts e gerenciamento de conteúdo.",
+    image: "/blog-cms-dark-theme.jpg",
+    screenshots: [],
+    tags: ["Next.js", "Strapi", "PostgreSQL", "Tailwind"],
     github: "#",
   },
   {
     id: 7,
+    title: "Dashboard Analytics",
+    description: "Dashboard de analytics com visualizações interativas e relatórios customizados.",
+    image: "/analytics-dashboard-dark-theme.png",
+    screenshots: [],
+    tags: ["React", "Redux", "D3.js", "NestJS"],
+    github: "#",
+  },
+  {
+    id: 8,
+    title: "Sistema de Chat Real-time",
+    description: "Aplicação de chat em tempo real com salas e mensagens privadas.",
+    image: "/dark-theme-chat-app.png",
+    screenshots: [],
+    tags: ["React", "Socket.io", "MongoDB", "Express"],
+    github: "#",
+  },
+  {
+    id: 9,
     title: "Portfolio Interativo",
     description: "Portfolio pessoal com animações, tema dark/light e design responsivo.",
     image: "/developer-portfolio-dark-theme.jpg",
+    screenshots: [],
     tags: ["Next.js", "TypeScript", "Tailwind", "Framer"],
-    demo: "#",
     github: "#",
   },
 ]
 
-function ProjectCard({ project, index }: { project: (typeof projects)[0]; index: number }) {
+type Project = (typeof projects)[0]
+
+function ProjectCard({
+  project,
+  index,
+  onImageClick,
+}: {
+  project: Project
+  index: number
+  onImageClick: (project: Project) => void
+}) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -84,31 +138,20 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
         {String(index + 1).padStart(2, "0")}
       </span>
 
-      {/* Image */}
-      <div className="relative overflow-hidden aspect-video">
+      {/* Image - clickable to open lightbox */}
+      <div
+        className="relative overflow-hidden aspect-video cursor-pointer"
+        onClick={() => onImageClick(project)}
+      >
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
           className={`object-cover transition-transform duration-500 ${isHovered ? "scale-105" : "scale-100"}`}
         />
-        <div
-          className={`absolute inset-0 bg-background/80 flex items-center justify-center gap-4 transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-0"}`}
-        >
-          <a
-            href={project.demo}
-            className="p-3 bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            aria-label="Ver demo"
-          >
-            <ExternalLink size={18} />
-          </a>
-          <a
-            href={project.github}
-            className="p-3 border border-border text-foreground hover:border-primary transition-colors"
-            aria-label="Ver código"
-          >
-            <Github size={18} />
-          </a>
+        {/* Expand indicator */}
+        <div className="absolute bottom-2 right-2 p-1.5 bg-background/70 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity">
+          <Maximize2 size={14} />
         </div>
       </div>
 
@@ -125,6 +168,31 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
             </span>
           ))}
         </div>
+
+        {/* Links */}
+        <div className="flex items-center gap-4">
+          {project.github && project.github !== "#" && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-secondary transition-colors font-mono"
+            >
+              <Github size={14} />
+              <span>source code</span>
+            </a>
+          )}
+          {project.url && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-secondary transition-colors font-mono"
+            >
+              {project.url.replace("https://", "")}
+            </a>
+          )}
+        </div>
       </div>
     </div>
   )
@@ -132,7 +200,39 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 
 export function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
+
+  const screenshots = selectedProject?.screenshots ?? []
+  const hasMultiple = screenshots.length > 1
+  const currentImage = screenshots.length > 0
+    ? screenshots[currentImageIndex]
+    : selectedProject?.image ?? ""
+
+  const goNext = useCallback(() => {
+    setCurrentImageIndex((i) => (i + 1) % screenshots.length)
+  }, [screenshots.length])
+
+  const goPrev = useCallback(() => {
+    setCurrentImageIndex((i) => (i - 1 + screenshots.length) % screenshots.length)
+  }, [screenshots.length])
+
+  // Reset index when project changes
+  useEffect(() => {
+    setCurrentImageIndex(0)
+  }, [selectedProject])
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!selectedProject || !hasMultiple) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goNext()
+      if (e.key === "ArrowLeft") goPrev()
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [selectedProject, hasMultiple, goNext, goPrev])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,11 +269,105 @@ export function ProjectsSection() {
           {/* Projects grid */}
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                onImageClick={setSelectedProject}
+              />
             ))}
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <Dialog.Root open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-50 bg-background/90 backdrop-blur-sm" />
+          <Dialog.Content className="fixed inset-4 md:inset-8 z-50 flex flex-col items-center justify-center outline-none">
+            {selectedProject && (
+              <>
+                <Dialog.Close className="absolute top-0 right-0 p-2 text-muted-foreground hover:text-foreground transition-colors z-10">
+                  <X size={20} />
+                </Dialog.Close>
+
+                {/* Project info bar */}
+                <div className="flex items-center gap-4 mb-4 w-full max-w-5xl">
+                  <Dialog.Title className="text-lg font-semibold text-foreground">
+                    {selectedProject.title}
+                  </Dialog.Title>
+                  {selectedProject.url && (
+                    <a
+                      href={selectedProject.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-muted-foreground hover:text-secondary transition-colors font-mono"
+                    >
+                      {selectedProject.url.replace("https://", "")}
+                    </a>
+                  )}
+                  {selectedProject.github && selectedProject.github !== "#" && (
+                    <a
+                      href={selectedProject.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors"
+                    >
+                      <Github size={16} />
+                      <span className="font-mono">source</span>
+                    </a>
+                  )}
+                </div>
+
+                <VisuallyHidden.Root>
+                  <Dialog.Description>
+                    {selectedProject.description}
+                  </Dialog.Description>
+                </VisuallyHidden.Root>
+
+                {/* Screenshot viewer */}
+                <div className="relative w-full max-w-5xl">
+                  <div className="relative overflow-auto max-h-[80vh] border border-border">
+                    <Image
+                      src={currentImage}
+                      alt={selectedProject.title}
+                      width={1920}
+                      height={1080}
+                      className="w-full h-auto object-contain bg-card"
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                    />
+                  </div>
+
+                  {/* Navigation arrows */}
+                  {hasMultiple && (
+                    <>
+                      <button
+                        onClick={goPrev}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border text-muted-foreground hover:text-foreground hover:border-secondary transition-colors"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={goNext}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border text-muted-foreground hover:text-foreground hover:border-secondary transition-colors"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Image counter */}
+                {hasMultiple && (
+                  <div className="mt-3 text-xs text-muted-foreground font-mono">
+                    {currentImageIndex + 1} / {screenshots.length}
+                  </div>
+                )}
+              </>
+            )}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </section>
   )
 }
