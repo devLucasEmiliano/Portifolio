@@ -170,8 +170,13 @@ function ProjectCard({
 
 export function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [selectedProject, _setSelectedProject] = useState<Project | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const setSelectedProject = useCallback((project: Project | null) => {
+    _setSelectedProject(project)
+    setCurrentImageIndex(0)
+  }, [])
   const sectionRef = useRef<HTMLElement>(null)
 
   const screenshots = selectedProject?.screenshots ?? []
@@ -187,11 +192,6 @@ export function ProjectsSection() {
   const goPrev = useCallback(() => {
     setCurrentImageIndex((i) => (i - 1 + screenshots.length) % screenshots.length)
   }, [screenshots.length])
-
-  // Reset index when project changes
-  useEffect(() => {
-    setCurrentImageIndex(0)
-  }, [selectedProject])
 
   // Keyboard navigation
   useEffect(() => {
@@ -314,12 +314,14 @@ export function ProjectsSection() {
                       <button
                         onClick={goPrev}
                         className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border text-muted-foreground hover:text-foreground hover:border-secondary transition-colors"
+                        aria-label="Previous image"
                       >
                         <ChevronLeft size={20} />
                       </button>
                       <button
                         onClick={goNext}
                         className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-background/80 border border-border text-muted-foreground hover:text-foreground hover:border-secondary transition-colors"
+                        aria-label="Next image"
                       >
                         <ChevronRight size={20} />
                       </button>

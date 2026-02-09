@@ -14,7 +14,7 @@ export function Footer() {
             <span className="text-foreground">Tailwind</span>
           </p>
 
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground font-mono transition-colors">
+          <a href="https://github.com/devLucasEmiliano" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono transition-colors">
             <span className="text-secondary">{"<"}</span>
             source
             <span className="text-secondary">{"/>"}</span>

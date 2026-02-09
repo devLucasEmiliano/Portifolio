@@ -32,9 +32,13 @@ export function ContactSection() {
   }, [])
 
   const copyEmail = async () => {
-    await navigator.clipboard.writeText(email)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Clipboard API unavailable (non-HTTPS context)
+    }
   }
 
   return (

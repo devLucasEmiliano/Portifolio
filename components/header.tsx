@@ -70,12 +70,14 @@ export function Header() {
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle theme"
           >
             {mounted && (theme === "dark" ? <Sun size={18} /> : <Moon size={18} />)}
           </button>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>

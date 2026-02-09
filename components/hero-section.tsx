@@ -20,7 +20,7 @@ export function HeroSection() {
     }, 100)
 
     return () => clearInterval(typingInterval)
-  }, [])
+  }, [fullName])
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
